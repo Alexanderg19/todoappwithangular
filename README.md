@@ -1,6 +1,6 @@
 # Todoapp
 
-# Explora el rpoyecto en el siguiente enlace =>
+# Explora el proyecto en el siguiente enlace =>
 
 https://mytodosbyday.web.app
 
