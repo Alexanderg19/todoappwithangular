@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>Hola este es un super proyecto con Angular</h1>
+  <h2> {{ welcome }} </h2>
+  <ul>
+    <li *ngFor="let task of tasks()">
+      {{ task }}
+    </li>
+  </ul>
+  <hr />
+
+  <h1> {{ 'Hola'.repeat(4) }} </h1>
+  <p>La suma de 5 + 5 es: {{ 5 + 5 }} </p>
+  <p>Hola soy {{ name() }} y tengo {{ age }} años </p>
+
+  <hr />
+
+  <img [src]="person().avatar" alt="">
+  <input type="text" [value]="person().age">
+  <p> Person: {{ person().name }} </p>
+  <button [disabled]="disabled">Click me</button>
+
+  <hr />
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickHandler()">Double click me</button>
+
+  <p>Change number</p>
+  <input type="number" value="18" (change)="changeHandler($event)">
+
+  <p>Change text its value is valueInputChange => {{ valueInputChange }}</p>
+  <input type="text" [value]="name()" (change)="changeHandler($event)">
+
+  <p>keydown text its value is => {{ valueInputKeyDown }} </p>
+  <input type="text" [value]="person().name" (keydown)="keydownHandler($event)">
+  <p>name signals: => {{ name() }} </p>
+
+  <hr />
+
+  <h1>Signals</h1>
+  <input type="text" [value]="person().name" (keydown)="changeHandlerSignals($event)">
+  <p>name: => {{ name() }} </p>
+
+  <h1>Increment</h1>
+  <button (click)="increase()">Increase</button>
+  <p>New value: {{ initialValue() }} </p>
+
+
+  <h1>List signals</h1>
+  <p>{{ tasks().length }}</p>
+  <ul>
+    <li *ngFor="let task of tasks(); index as i">
+      {{ i }} {{ task }}
+    </li>
+  </ul>
+
+
+  <hr />
+  <h1>ngIf directiva</h1>
+
+  <div *ngIf="1 !== 1">
+    My contend
+  </div>
+
+  <div *ngIf="name() === 'alexander'">
+    Soy Alexander
+  </div>
+  <input type="number" [value]="person().age" (change)="changeAge($event)">
+  <div *ngIf="person().name === 'alexander' && person().age > 18 else elseBlock">
+    Soy Alexander signals y soy mayor de 18
+  </div>
+  <ng-template #elseBlock>
+    Soy Alexander signals y soy menor de 18
+  </ng-template>
+
+
+  <hr />
+  <input type="text" [value]="person().name" (keydown)="changeName($event)">
+  <h1>ngSwitch and ngSiwtchDefault</h1>
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'alexander'">Soy Alexander</p>
+    <p *ngSwitchCase="'ingrid'">Soy ingrid</p>
+    <p *ngSwitchCase="'johana'">Soy johana</p>
+    <p *ngSwitchCase="'jaime'">Soy Alexander</p>
+    <p *ngSwitchDefault>Soy nadie</p>
+  </div>
+
+  <hr />
+  <h1>ReactiveFormsModule</h1>
+  <input type="color" [formControl]="colorCtrl">
+  <p>Color: {{colorCtrl.value}} </p>
+  <svg>
+    <g>
+      <rect y="0" x="0" width="100" height="100" [attr.fill]="colorCtrl.value" />
+    </g>
+  </svg>
+
+  <hr />
+  <h1>Modificando estilos</h1>
+  <input type="number" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
+
+  <hr />
+  <h1>Clases dinámicas</h1>
+  <p>
+    <input type="text" [formControl]="nameCtrl"> <br />
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre inválido</span>
+  </p>
+
+  <p>Hola Mundo</p>
+</div>
